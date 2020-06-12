@@ -166,8 +166,9 @@ class deepsort_rbc():
 			trackers = self.tracker.tracks
 			return trackers
 		
-		# in case no classes are provided, use default value
-		classes = ['noclass'] * len(out_boxes)
+		# IN CASE no classes are provided, use default value
+		if len(classes) != len(out_boxes):
+			classes = ['noclass'] * len(out_boxes)
 
 		detections = np.array(out_boxes)
 		#features = self.encoder(frame, detections.copy())
