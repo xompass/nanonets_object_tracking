@@ -5,7 +5,7 @@ from deep_sort.application_util import visualization
 from deep_sort.deep_sort.detection import Detection
 
 import numpy as np
-
+import os
 import matplotlib.pyplot as plt
 
 import torch
@@ -39,7 +39,9 @@ class deepsort_rbc():
 		if wt_path is not None:
 			self.encoder = torch.load(wt_path)			
 		else:
-			self.encoder = torch.load('ckpts/model640.pt')
+			dirname = os.path.dirname(os.path.abspath(__file__))
+			filename = os.path.join(dirname,'ckpts/model640.pt')
+			self.encoder = torch.load(filename)
 			
 		self.encoder = self.encoder.cuda()
 		self.encoder = self.encoder.eval()
