@@ -164,9 +164,9 @@ class deepsort_rbc():
 
 		if out_boxes==[]:			
 			self.tracker.predict()
-			print('No detections')
-			trackers = self.tracker.tracks
-			return trackers
+			# print('No detections')
+			# trackers = self.tracker.tracks
+			return self.tracker,[]
 		
 		# IN CASE no classes are provided, use default value
 		if len(classes) != len(out_boxes):
